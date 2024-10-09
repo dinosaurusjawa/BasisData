@@ -1,0 +1,41 @@
+@startuml
+
+skinparam entity {
+    BackgroundColor #F9F9F9
+    BorderColor #005DAA
+}
+
+entity "Pengajar" as Pengajar {
+    + ID Pengajar : String <<L30>>
+    + Nama Pengajar : String <<Celin>>
+    + Spesialisasi : String <<Computer>>
+}
+
+entity "Sesi Webinar" as SesiWebinar {
+    + ID Sesi : String <<126>>
+    + Judul Webinar : String <<Pengaruh AI>>
+    + Deskripsi : String <<Perubahan dunia komputer>>
+    + Tanggal : Date <<10/10/2024
+    + Waktu : Time <<07:00-14:00>>
+    + ID Pengajar : String <<L30>>
+}
+
+entity "Peserta" as Peserta {
+    + ID Peserta : String <<P1>>
+    + Nama Peserta : String <<Putri>>
+    + Email : String <<putri@gmail.com>>
+    + Telepon : String <<0812934124>>
+}
+
+entity "Pendaftaran" as Pendaftaran {
+    + ID Pendaftaran : String <<IP 11>>
+    + ID Peserta : String <<P1>>
+    + ID Sesi : String <<126>>
+    + Status Pembayaran : String <<Lunas>>
+}
+
+Pengajar ||--o{ SesiWebinar : "mengajar"
+Peserta ||--o{ Pendaftaran : "mendaftar"
+SesiWebinar ||--o{ Pendaftaran : "didaftarkan di"
+
+@enduml

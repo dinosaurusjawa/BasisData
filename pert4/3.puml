@@ -1,0 +1,56 @@
+@startuml
+
+skinparam entity {
+    BackgroundColor #F9F9F9
+    BorderColor #005DAA
+}
+
+
+entity "Mahasiswa" as Mahasiswa {
+    + NIM : String <<20230801509>>
+    + Nama Mhs : String <<Marcellino>>
+}
+
+entity "Mata Kuliah" as MataKuliah {
+    + KD MK : String <<CIE 312>>
+    + Nama MK : String <<BasisData>>
+}
+
+entity "Dosen" as Dosen {
+    + No Dosen : String <<4124>>
+    + Nama Dosen : String <<Hendry>>
+}
+
+entity "Nilai" as Nilai {
+    + NIM : String <<20230801509>>
+    + KD MK : String <<Marcellino>>
+    + No Dosen : String <<312>>
+    + Nilai : String <<A>>
+}
+
+Mahasiswa ||--o{ Nilai : "Mendapatkan"
+MataKuliah ||--o{ Nilai : "Diajarkan"
+Dosen ||--o{ MataKuliah : "Mengajar"
+
+
+note right of Mahasiswa
+  "Entitas ini merepresentasikan
+   data mahasiswa"
+end note
+
+note right of MataKuliah
+  "Entitas ini merepresentasikan
+   data mata kuliah"
+end note
+
+note right of Dosen
+  "Entitas ini merepresentasikan
+   data dosen"
+end note
+
+note right of Nilai
+  "Entitas ini merepresentasikan
+   nilai yang diperoleh mahasiswa"
+end note
+
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+
+skinparam entity {
+    BackgroundColor #F9F9F9
+    BorderColor #005DAA
+}
+
+entity "Dosen" as Dosen {
+    + No Dosen : String <<4124>>
+    + Nama Dosen : String <<Hendry>>
+    + Gelar : String <<S.kom , MM>>
+}
+
+entity "Mahasiswa" as Mahasiswa {
+    + NIM : String <<20230801509>>
+    + Nama Mhs : String <<Marcellino>>
+    + Jurusan : String <<Teknik Informatika>>
+}
+
+entity "Mata Kuliah" as MataKuliah {
+    + KD MK : String <<546>>
+    + Nama MK : String <<Basis Data>>
+    + SKS : Integer <<3 SKS>>
+}
+
+entity "Kelas" as Kelas {
+    + ID Kelas : String <<512>>
+    + Nama Kelas : String <<Kelas Teknik BS>>
+    + Ruangan : String <<401>>
+}
+
+entity "Jadwal" as Jadwal {
+    + ID Jadwal : String <<22/10/24>>
+    + Hari : String <<Sabtu>>
+    + Jam : String <<09:00-12:00>>
+}
+
+entity "KRS" as KRS {
+    + ID KRS : String <<CIE 427>>
+    + NIM : String <<20230801509>>
+    + Kode MataKuliah : String <<546>>
+    + ID Kelas : String <<512>>
+}
+
+Dosen ||--o{ MataKuliah : "Mengajar MK(...)"
+MataKuliah ||--o{ Kelas : "Diajarkan di kelas(...)"
+Kelas ||--o{ Jadwal : "Mempunyai jadwal (...)"
+Mahasiswa ||--o{ KRS : "Jadwal kuliah (...)"
+KRS }o--|| Mahasiswa : "Data Mahasiswa (...)"
+KRS }o--|| MataKuliah : "Data MataKuliah (...)"
+KRS }o--|| Kelas : "Isi (...)"
+
+@enduml
