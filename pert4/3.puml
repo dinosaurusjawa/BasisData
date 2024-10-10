@@ -27,35 +27,33 @@ entity "Nilai" as Nilai {
     + Nilai : String
 }
 
-' Define relationships with arrows and labels
 Mahasiswa ||--o{ Nilai : "Mendapatkan"
 MataKuliah ||--o{ Nilai : "Diajarkan"
 Dosen ||--o{ MataKuliah : "Mengajar"
 
-' Data entitas untuk Mahasiswa
+
 note right of Mahasiswa
   "1. 12345 - Ali\n
    2. 12346 - Darwin\n
    3. 12349 - Siti"
 end note
 
-' Data entitas untuk Mata Kuliah
+
 note right of MataKuliah
   "1. TI-001 - Algoritma Pemrograman\n
    2. TI-101 - Basis Data"
 end note
 
-' Data entitas untuk Dosen
 note right of Dosen
   "1. 771 - Dian\n
    2. 773 - Elias"
 end note
 
-' Data entitas untuk Nilai
+
 note right of Nilai
-  "1. 12345, TI-001, 771, A\n
-   2. 12345, TI-101, 773, A\n
-   3. 12346, TI-001, 771, B\n
+  "1. 12345, TI-001, 771, A
+   2. 12345, TI-101, 773, A
+   3. 12346, TI-001, 771, B
    4. 12349, TI-001, 771, A"
 end note
 
