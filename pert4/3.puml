@@ -5,52 +5,58 @@ skinparam entity {
     BorderColor #005DAA
 }
 
-
 entity "Mahasiswa" as Mahasiswa {
-    + NIM : String <<20230801509>>
-    + Nama Mhs : String <<Marcellino>>
+    + NIM : String <<PK>>
+    + Nama Mhs : String
 }
 
 entity "Mata Kuliah" as MataKuliah {
-    + KD MK : String <<CIE 312>>
-    + Nama MK : String <<BasisData>>
+    + KD MK : String <<PK>>
+    + Nama MK : String
 }
 
 entity "Dosen" as Dosen {
-    + No Dosen : String <<4124>>
-    + Nama Dosen : String <<Hendry>>
+    + No Dosen : String <<PK>>
+    + Nama Dosen : String
 }
 
 entity "Nilai" as Nilai {
-    + NIM : String <<20230801509>>
-    + KD MK : String <<Marcellino>>
-    + No Dosen : String <<312>>
-    + Nilai : String <<A>>
+    + NIM : String <<FK>>
+    + KD MK : String <<FK>>
+    + No Dosen : String <<FK>>
+    + Nilai : String
 }
 
+' Define relationships with arrows and labels
 Mahasiswa ||--o{ Nilai : "Mendapatkan"
 MataKuliah ||--o{ Nilai : "Diajarkan"
 Dosen ||--o{ MataKuliah : "Mengajar"
 
-
+' Data entitas untuk Mahasiswa
 note right of Mahasiswa
-  "Entitas ini merepresentasikan
-   data mahasiswa"
+  "1. 12345 - Ali\n
+   2. 12346 - Darwin\n
+   3. 12349 - Siti"
 end note
 
+' Data entitas untuk Mata Kuliah
 note right of MataKuliah
-  "Entitas ini merepresentasikan
-   data mata kuliah"
+  "1. TI-001 - Algoritma Pemrograman\n
+   2. TI-101 - Basis Data"
 end note
 
+' Data entitas untuk Dosen
 note right of Dosen
-  "Entitas ini merepresentasikan
-   data dosen"
+  "1. 771 - Dian\n
+   2. 773 - Elias"
 end note
 
+' Data entitas untuk Nilai
 note right of Nilai
-  "Entitas ini merepresentasikan
-   nilai yang diperoleh mahasiswa"
+  "1. 12345, TI-001, 771, A\n
+   2. 12345, TI-101, 773, A\n
+   3. 12346, TI-001, 771, B\n
+   4. 12349, TI-001, 771, A"
 end note
 
 @enduml
